@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Elias Krasny</title>
+  <!-- TODO: one plain sentence describing you and the site. -->
+  <meta name="description" content="Elias Krasny — student at the University of Virginia, working on AI safety.">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#e9dfc6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+
+  <!-- Social preview. TODO: set og:url to your real domain once deployed. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Elias Krasny">
+  <meta property="og:description" content="Personal site of Elias Krasny.">
+  <meta property="og:url" content="https://example.com/">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Apply the saved theme before first paint so there's no flash. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") {
+          document.documentElement.setAttribute("data-theme", t);
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header>
+      <h1 class="name">Elias Krasny</h1>
+      <!-- TODO: one or two plain sentences. No slogans. -->
+      <p class="tagline">Student at the University of Virginia studying Systems Engineering
+        and working on AI safety.</p>
+
+      <!-- Add a line + a "·" separator for any others later. -->
+      <nav class="links" aria-label="Elsewhere">
+        <a href="https://www.linkedin.com/in/elias-krasny/">LinkedIn</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <span class="email">eliaskrasny [at] gmail [dot] com</span>
+      </nav>
+
+      <!-- Section tabs. Each href points at a view id in <main> below.
+           With JavaScript off these are plain in-page anchors. -->
+      <nav class="tabs" aria-label="Sections">
+        <a href="#home">About &amp; now</a>
+        <a href="#experience">Experiences</a>
+        <a href="#interests">Interests</a>
+        <!-- Hidden for now — restore this line and the matching <template> below to bring back the Reading & podcasts tab.
+        <a href="#reading">Reading &amp; podcasts</a>
+        -->
+      </nav>
+    </header>
+
+    <!-- Three views. The script shows one at a time and syncs it with the URL
+         hash; without the script all three are shown, stacked. -->
+    <main>
+
+      <!-- ============================== HOME ============================== -->
+      <div class="view" id="home" role="region" aria-label="About and now" tabindex="-1">
+
+        <section aria-labelledby="about-title">
+          <h2 class="section-title" id="about-title">About</h2>
+          <!-- TODO: two or three plain lines, your own words. Keep it short. -->
+          <p>I'm an undergraduate at the University of Virginia studying Systems Engineering and working on AI safety.</p>
+        </section>
+
+        <section aria-labelledby="now-title">
+          <h2 class="section-title" id="now-title">Now</h2>
+          <!-- TODO: what actually has your attention right now. Swap the date. -->
+          <p>Right now on an exchange semester in Barcelona, Spain. While here I'll be helping as an organizer for <a href="https://www.aisafetybcn.org/">AI Safety Barcelona</a>. I am also a researcher at <a href="https://sparai.org/">SPAR</a> working on AI safety comms through the project <a href="https://www.aisafetysaidsimply.com/">AI Safety Said Simply</a>. Back home, I'm the forecasting lead and an exec member at <a href="https://vaisi.org/">Virginia AI Security Initiative</a>, and I'm trying to stay as involved as I can from Barcelona.</p>
+          <p>While abroad I am also trying to travel Europe as much as I possibly can!</p>
+        </section>
+
+      </div>
+
+      <!-- ============================ EXPERIENCES ======================== -->
+      <div class="view" id="experience" role="region" aria-label="Experiences" tabindex="-1">
+
+        <section aria-labelledby="experiences-title">
+          <h2 class="section-title" id="experiences-title">Experiences</h2>
+
+          <!-- TODO: keep it to "Role @ Organization", newest first. No dates,
+               no descriptions. The organization name is the link. -->
+          <ul class="simple-list">
+            <li>Research Mentee <span class="dim">@ <a href="https://sparai.org/">SPAR Research</a></span></li>
+            <li>Forecasting Lead and Organizer <span class="dim">@ <a href="https://vaisi.org/">Virginia AI Security Initiative</a></span></li>
+            <li>Organizer <span class="dim">@ <a href="https://www.aisafetybcn.org/">AI Safety Barcelona</a></span></li>
+            <li>AI Governance Fellowship <span class="dim">@ <a href="https://vaisi.org/">Virginia AI Security Initiative</a></span></li>
+            <li>Process Engineering Intern <span class="dim">@ <a href="https://www.kongsbergautomotive.com/company/">Kongsberg Automotive</a></span></li>
+            <li>Director of Outreach, Consulting Project Lead <span class="dim">@ <a href="https://www.bapsatuva.org/">BAPS (Become A Problem-Solver)</a></span></li>
+          </ul>
+        </section>
+
+      </div>
+
+      <!-- ============================== INTERESTS ======================= -->
+      <div class="view" id="interests" role="region" aria-label="Interests" tabindex="-1">
+
+        <section aria-labelledby="interests-title">
+          <h2 class="section-title" id="interests-title">Interests</h2>
+
+          <!-- Plain rows, except: Photography links out, and Music / Movies
+               expand via native <details>. -->
+          <ul class="interests">
+            <li><a href="https://www.instagram.com/eliaskrasnyphoto/">Photography</a></li>
+
+            <li>
+              <details class="drop">
+                <summary>I listen to a lot of music — <span class="drop__more">click drop down for some artists</span></summary>
+                <!-- TODO: your artists, comma-separated. Add as many as you like. -->
+                <p class="drop__body">Alex G, Mac Demarco, Elliot Smith, The Cure, Wilco, Big Thief, The Beatles, Fog Lake, The Velvet Underground, Dean Blunt, Labi Sifre, The Smiths</p>
+              </details>
+            </li>
+
+            <li>
+              <details class="drop">
+                <summary>I watch a lot of movies — <span class="drop__more">click drop down for some I like</span></summary>
+                <!-- TODO: films you'd recommend, comma-separated. -->
+                <p class="drop__body">Sound of Metal, Parasite, The Perks of Being a Wallflower, The Royal Tenenbaums, 2001: A Space Odyssey, Inglourious Basterds, La Haine, The Grand Budapest Hotel</p>
+              </details>
+            </li>
+
+            <li>Running and cycling</li>
+            <li>The Tour de France</li>
+            <li>Collecting records</li>
+            <li>Traveling</li>
+            <li>The Minute Cryptic</li>
+          </ul>
+        </section>
+
+      </div>
+
+      <!-- ========================= READING & PODCASTS =================== -->
+      <!-- HIDDEN FOR NOW. To bring this section back:
+           1. remove this <template> and its closing </template> below
+           2. un-comment the "#reading" link in <nav class="tabs"> above -->
+      <template>
+      <div class="view" id="reading" role="region" aria-label="Reading and podcasts" tabindex="-1">
+
+        <section aria-labelledby="reading-title">
+          <h2 class="section-title" id="reading-title">Reading &amp; podcasts</h2>
+
+          <!-- TODO: real titles + real URLs. "<span class='by'>— Author</span>"
+               is optional per row. -->
+          <div class="list-group">
+            <h3>Reading</h3>
+            <ul class="simple-list">
+              <li><a href="https://www.effectivealtruism.org/doing-good-better">Doing Good Better</a> <span class="by">— William MacAskill</span></li>
+              <li><a href="https://manonkempermann.eu/comms-in-ai-safety.html">AI Safety Is Dropping the Ball on Communications</a> <span class="by">— Manon Kempermann</span></li>
+              <li><a href="https://intelligence.org/2024/05/29/miri-2024-communications-strategy/">MIRI 2024 Communications Strategy</a> <span class="by">— MIRI</span></li>
+              <li><a href="https://ai-2027.com/">AI 2027</a> <span class="by">— AI Futures Project</span></li>
+              <li><a href="https://ai-2040.com/">AI 2040: Plan A</a> <span class="by">— AI Futures Project</span></li>
+              <li><a href="https://nanransohoff.substack.com/p/the-third-wave-of-american-philanthropy">The Third Wave of American Philanthropy</a> <span class="by">— Nan Ransohoff</span></li>
+            </ul>
+          </div>
+
+          <div class="list-group">
+            <h3>Podcasts</h3>
+            <ul class="simple-list">
+              <li><a href="https://open.spotify.com/episode/2HtTyyjJ0kaIEYe4EKZjse">AI 2027's author returns with a plan to change the ending</a> <span class="by">— 80,000 Hours</span></li>
+              <li><a href="https://open.spotify.com/episode/46v99t11LvOW05YZL6ldzE">What the hell happened with AGI timelines in 2026?</a> <span class="by">— 80,000 Hours</span></li>
+              <li><a href="https://open.spotify.com/episode/6rNmtkdYZ4TgaZOG2WqOnx">How AI could create the world's biggest problems</a> <span class="by">— 80,000 Hours</span></li>
+              <li><a href="https://open.spotify.com/episode/5xZnb1A1a7HGLiDuPGXQOj">Inside the OpenAI agent swarm that hacked Hugging Face</a> <span class="by">— Dwarkesh Podcast</span></li>
+              <li><a href="https://open.spotify.com/episode/4TdEXIVDv9AxT30DGG0KR1">What happens once AI can automate AI research?</a> <span class="by">— Dwarkesh Podcast</span></li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+      </template>
+
+    </main>
+
+    <footer class="site-footer">
+      <span>&copy; 2026 Elias Krasny</span>
+      <button type="button" class="theme-toggle" data-theme-toggle>Dark</button>
+    </footer>
+
+  </div>
+
+  <script>
+    /* View switching. Without JavaScript every view stays visible, stacked. */
+    (function () {
+      var body = document.body;
+      var views = Array.prototype.slice.call(document.querySelectorAll("main > .view"));
+      var tabnav = document.querySelector(".tabs");
+      if (views.length < 2 || !tabnav) return;
+
+      var tabs = Array.prototype.slice.call(tabnav.querySelectorAll("a"));
+      var ids = views.map(function (v) { return v.id; });
+      var baseTitle = document.title;
+      var titles = {
+        home: baseTitle,
+        experience: "Experiences — " + baseTitle,
+        interests: "Interests — " + baseTitle,
+        reading: "Reading & podcasts — " + baseTitle
+      };
+
+      body.classList.add("js-tabs");
+
+      function wanted() {
+        var h = (location.hash || "").slice(1);
+        return ids.indexOf(h) !== -1 ? h : ids[0];
+      }
+
+      function render(id, moveFocus) {
+        views.forEach(function (v) { v.hidden = v.id !== id; });
+        tabs.forEach(function (t) {
+          var on = t.hash === "#" + id;
+          t.classList.toggle("is-active", on);
+          if (on) { t.setAttribute("aria-current", "page"); }
+          else { t.removeAttribute("aria-current"); }
+        });
+        document.title = titles[id] || baseTitle;
+        if (moveFocus) {
+          /* Move focus into the new view for keyboard/screen-reader users,
+             but don't scroll the page — keep the reader where they were. */
+          var active = document.getElementById(id);
+          if (active) { active.focus({ preventScroll: true }); }
+        }
+      }
+
+      tabs.forEach(function (t) {
+        t.addEventListener("click", function (e) {
+          var id = t.hash.slice(1);
+          if (ids.indexOf(id) === -1) return;
+          e.preventDefault();
+          if (wanted() === id) { render(id, true); return; }
+          location.hash = id; /* fires hashchange -> render */
+        });
+      });
+
+      window.addEventListener("hashchange", function () { render(wanted(), true); });
+
+      render(wanted(), false);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var btn = document.querySelector("[data-theme-toggle]");
+      if (!btn) return;
+
+      var mq = window.matchMedia("(prefers-color-scheme: dark)");
+
+      function current() {
+        return document.documentElement.getAttribute("data-theme")
+          || (mq.matches ? "dark" : "light");
+      }
+
+      function sync() {
+        var isDark = current() === "dark";
+        btn.textContent = isDark ? "Light" : "Dark";
+        btn.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+      }
+
+      btn.addEventListener("click", function () {
+        var next = current() === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+        sync();
+      });
+
+      mq.addEventListener("change", sync);
+      sync();
+    })();
+  </script>
+</body>
+</html>

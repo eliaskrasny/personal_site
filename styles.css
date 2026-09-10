@@ -1,0 +1,361 @@
+/* ==========================================================================
+   Elias Krasny — personal site
+   Plain HTML + CSS. No build step, no dependencies, no tracking.
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  --bg:         #e9dfc6;
+  --text:       #201d15;
+  --text-muted: #5c5647;
+  --text-faint: #746c56;
+  --rule:       #d1c4a2;
+  --accent:     #1b4dbb;
+  --underline:  #bcae88;
+  --selection:  rgba(27, 77, 187, 0.14);
+
+  --measure: 38rem;
+  --pad-x:   1.5rem;
+}
+
+/* Explicit dark theme (set via the footer toggle). */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg:         #121212;
+  --text:       #e9e9e7;
+  --text-muted: #a2a2a2;
+  --text-faint: #8a8a8a;
+  --rule:       #2b2b2b;
+  --accent:     #8fb2ff;
+  --underline:  #454545;
+  --selection:  rgba(143, 178, 255, 0.20);
+}
+
+:root[data-theme="light"] { color-scheme: light; }
+
+/* System dark preference, unless the visitor forced light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:         #121212;
+    --text:       #e9e9e7;
+    --text-muted: #a2a2a2;
+    --text-faint: #8a8a8a;
+    --rule:       #2b2b2b;
+    --accent:     #8fb2ff;
+    --underline:  #454545;
+    --selection:  rgba(143, 178, 255, 0.20);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--selection); }
+
+/* --------------------------------------------------------------------------
+   Layout
+   -------------------------------------------------------------------------- */
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 4rem var(--pad-x) 3rem;
+}
+
+@media (min-width: 42rem) {
+  .wrap { padding: 6.5rem var(--pad-x) 4rem; }
+}
+
+section { margin-top: 2.75rem; }
+.view > section:first-child { margin-top: 2.25rem; }
+
+/* --------------------------------------------------------------------------
+   Typography
+   -------------------------------------------------------------------------- */
+
+h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.25; }
+
+p { margin: 0 0 1rem; }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--underline);
+  text-underline-offset: 2px;
+}
+a:hover { text-decoration-color: currentColor; }
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a, .theme-toggle {
+    transition: color 120ms ease, text-decoration-color 120ms ease;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
+.name {
+  font-size: 1.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.tagline {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--text-muted);
+}
+
+.links {
+  margin-top: 1.15rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  font-size: 0.9375rem;
+}
+.links a { color: var(--text-muted); text-decoration: none; }
+.links a:hover { color: var(--text); text-decoration: underline; }
+.links .sep { color: var(--text-faint); user-select: none; }
+.links .email { color: var(--text-muted); }
+
+/* --------------------------------------------------------------------------
+   Section tabs
+   -------------------------------------------------------------------------- */
+
+.tabs {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  font-size: 0.9375rem;
+}
+.tabs a {
+  color: var(--text-muted);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+}
+.tabs a:hover { color: var(--text); }
+.tabs a.is-active {
+  color: var(--text);
+  border-bottom-color: currentColor;
+}
+.tabs a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Views
+   -------------------------------------------------------------------------- */
+
+/* The view container is focused on tab switch so keyboard users land in the
+   new content; it should not show a focus ring itself. */
+.view:focus { outline: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .js-tabs .view:not([hidden]) {
+    animation: view-in 220ms ease both;
+  }
+  @keyframes view-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Section headings
+   -------------------------------------------------------------------------- */
+
+.section-title {
+  font-size: 1.375rem;
+  margin-bottom: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   Now
+   -------------------------------------------------------------------------- */
+
+.updated {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-faint);
+}
+
+/* --------------------------------------------------------------------------
+   Plain lists (Now, Affiliations)
+   -------------------------------------------------------------------------- */
+
+.simple-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.simple-list li { margin-bottom: 0.55rem; }
+.simple-list li:last-child { margin-bottom: 0; }
+
+.dim { color: var(--text-muted); }
+
+/* Labelled sub-lists inside a section (Reading & podcasts). */
+.list-group { margin-bottom: 1.75rem; }
+.list-group:last-child { margin-bottom: 0; }
+.list-group h3 {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.55rem;
+}
+.list-group .by { color: var(--text-muted); }
+
+/* --------------------------------------------------------------------------
+   Work & involvements (timeline)
+   -------------------------------------------------------------------------- */
+
+.entry { margin-bottom: 1.9rem; }
+.entry:last-child { margin-bottom: 0; }
+
+.entry__date {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.entry__role { font-weight: 600; }
+.entry__role a { color: inherit; }
+.entry__org { color: var(--text-muted); }
+.entry__org a { color: inherit; }
+
+.entry__note {
+  margin-top: 0.2rem;
+  font-size: 0.9375rem;
+}
+.entry__note p { margin: 0; }
+
+@media (min-width: 34rem) {
+  .entry {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    column-gap: 1.75rem;
+  }
+  .entry__date { padding-top: 0.15rem; }
+}
+
+/* --------------------------------------------------------------------------
+   Interests
+   -------------------------------------------------------------------------- */
+
+.interests {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.interests > li { margin-bottom: 0.7rem; }
+.interests > li:last-child { margin-bottom: 0; }
+
+/* Rows that expand (Music, Movies). Native <details>, no JS.
+   Only the hint after the dash reads as a link; a caret flips when open. */
+.drop > summary {
+  cursor: pointer;
+  width: fit-content;
+  list-style: none;                 /* hide the default triangle (Chrome/FF) */
+}
+.drop > summary::-webkit-details-marker { display: none; }  /* Safari */
+.drop > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+.drop__more {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--underline);
+  text-underline-offset: 2px;
+}
+.drop > summary:hover .drop__more {
+  color: var(--text);
+  text-decoration-color: currentColor;
+}
+.drop__more::after {
+  content: "\25BE";                 /* down caret */
+  display: inline-block;            /* keeps the caret clear of the underline */
+  margin-left: 0.4rem;
+  color: var(--text-faint);
+}
+.drop[open] .drop__more::after { transform: rotate(180deg); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .drop__more::after { transition: transform 150ms ease; }
+}
+
+.drop__body {
+  margin: 0.55rem 0 0;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  margin-top: 4.5rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-faint);
+}
+
+.theme-toggle {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.theme-toggle:hover { color: var(--text); text-decoration: underline; }
+
+/* --------------------------------------------------------------------------
+   Print
+   -------------------------------------------------------------------------- */
+
+@media print {
+  .theme-toggle { display: none; }
+  a { text-decoration: underline; }
+  .wrap { padding: 0; max-width: none; }
+}
